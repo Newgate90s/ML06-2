@@ -59,7 +59,7 @@ test_index = [0, 50, 100]
 # We will have 147 rows of data to use for training
 
 training_target = np.delete(iris_data_set.target, test_index)
-training_data = np.delete(iris_data_set, test_index, axis=0)
+training_data = np.delete(iris_data_set.data, test_index, axis=0)
 
 # Here we gp back to our testing data
 # remember this is unseen data by our classifier
@@ -71,8 +71,8 @@ test_data = iris_data_set.data[test_index]
 # Here is the coolest part!
 # Create our classifier
 # We will be using a decision tree
-dt_clf = tree.DecisionTreeClassifier
-dt_clf.fit(iris_data_set.data[test_index], training_target)
+dt_clf = tree.DecisionTreeClassifier()
+dt_clf.fit(training_data, training_target)
 
 # Time to get really cool
 # Here we classify the data
