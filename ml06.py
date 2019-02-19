@@ -1,90 +1,96 @@
-# id = Iris Demo
-
-# importing the numply library and using
-# np as my alias to reference it in code
-
+# Importing numpy for the mathematical functions
+# Importing tree from sklearn to use decision tree classifier
+# Importing the iris database from sklearn datasets
 import numpy as np
 from sklearn import tree
 from sklearn.datasets import load_iris
 
-# Now I want to import the iris datase
+# Loading the iris data set
 iris_data_set = load_iris()
 
-# Print out the features in the dataset
+print("Hello human!")
+print("\nI'm in need of your help.")
+print("\nI have great knowledge of Iris flowers but I can't seem to understand how this testing device works.")
+print("\nFor years I have been predicting what type of Iris flowers these are, but if only I could use this testing device....")
+print("\nI would know for sure if I've been right all this time.")
+print("\nAre you up to the task human?")
+wait = input("\nPress enter to help the machine.")
+print("-" * 40)
+
+print("\nGreat! Let's begin then.")
+print("\nFirst you need to view the data the testing device uses to help you understand the end result.")
+wait = input("Press enter to view data.")
+print("-" * 40)
+
+# Print out iris dataset features
 print(" " * 40)
-print("Features")
+print("Iris features:")
 print(iris_data_set.feature_names)
 
-# Print out our flower names aka labels
+
+# Print out the iris labels
 print(" " * 40)
-print("Labels")
+print("Iris labels:")
 print(iris_data_set.target_names)
 
-# Lets take a look at our data
-# Lets have a look at the first row
+# Prints the label legend
+print(" " * 40)
+print("Label legend:")
+print("0 = Setosa 1 = Versicolor 2 = Virginica")
+
+# Print out row 0 of the data set, then show the label for the row for reference
 print("-" * 40)
-print("We are just going to take a peek at the data. On row 0")
-# Notice the data below will line up perfectly with
-# the features above
-print("Notice the data below will line up perfectly with the features above")
+print("Row example(row 0):")
 print(iris_data_set.data[0])
-
-# Lets look at the label for this line of data
-print("_" * 40)
-print("Show the label for row 0. Wre are just taking a peek at the data")
-print("Label Table")
-print("0=setosa 1=versicolor 2=virginica")
-print("label=", iris_data_set.target[0])
+print("Row 0 label =", iris_data_set.target[0])
 
 print("_" * 40)
-print("The iris data set will be used to classify 3 types of flowers")
-print("The data set is 150 rows. 50 rows for each flower")
-print("The rows are in order")
-print("0-49 = setosa")
-print("50-99 = versicolor")
-print("100-149 = virginica")
-# Print out the full data set to have a reference
+print("Dataset functionality: ")
+print("- Classifies 3 different types of flowers")
+print("\n- 150 rows")
+print("\n- 50 rows per flower")
+print("\n- Rows 0-49 = Setosa")
+print("\n- Rows 50-99 = Versicolor")
+print("\n- Rows 100-149 = Virginica")
+
+# Prints out the whole data set and structures it
 print("_" * 40)
-print("The full data set to have a reference")
+print("Full dataset:")
 for i in range(len(iris_data_set.target)):
-    print("Example %d: Labels %s: Features %s:" % (i, iris_data_set.target[i], iris_data_set.data[i]))
+    print("Row %d: Label %s: Features %s:" % (i, iris_data_set.target[i], iris_data_set.data[i]))
 
-# Remove one type of each flower type
-# Because we are going test
-# This text data will be data neer seen before by our classifier
+# Creating an index of 1 row for each flower type
+# These rows wont be used as training
 test_index = [0, 50, 100]
 
-# Now let's make a set of training data
-# This is the bulk of our data
-# We will have 147 rows of data to use for training
 
+# Using the remaining 147 out of 150 rows as training data
 training_target = np.delete(iris_data_set.target, test_index)
 training_data = np.delete(iris_data_set.data, test_index, axis=0)
 
-# Here we gp back to our testing data
-# remember this is unseen data by our classifier
-# This contains only 3 test flowers
-
+# Setting the 3 rows we indexed as tests
 test_target = iris_data_set.target[test_index]
 test_data = iris_data_set.data[test_index]
 
-# Here is the coolest part!
-# Create our classifier
-# We will be using a decision tree
+# Creating a classifier
+# Using the decision tree classifier from tree
+# Fitting the training data and target
 dt_clf = tree.DecisionTreeClassifier()
 dt_clf.fit(training_data, training_target)
 
-# Time to get really cool
-# Here we classify the data
-# This is where the stuff happens
-
 print(" " * 40)
-print("Test data")
+print("\nNow that you have seen all the data, are you ready to tell me if my prediction is right or......")
+print("\nwrong...")
+wait = input ("Press enter when you're ready")
+
+# Printing out the test data labels
+# Printing out the prediction
+print("-" * 40)
+print("Testing device results: ")
 print(test_target)
-print(" " * 40)
-print("Machine's prediction data, check against test!")
-print("Is this am atch human?")
-print(dt_clf.presort(test_data))
+print("-" * 40)
+print("\nMy prediction is this.")
+print(dt_clf.predict(test_data))
+print("\nAm I right human?!")
 
-#commit test
-############
+
