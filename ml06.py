@@ -81,7 +81,7 @@ dt_clf.fit(training_data, training_target)
 print(" " * 40)
 print("\nNow that you have seen all the data, are you ready to tell me if my prediction is right or......")
 print("\nwrong...")
-wait = input ("Press enter when you're ready")
+wait = input("Press enter when you're ready")
 
 # Printing out the test data labels
 # Printing out the prediction
@@ -89,8 +89,8 @@ print("-" * 40)
 print("Testing device results: ")
 print(test_target)
 print("-" * 40)
-print("\nMy prediction is this.")
+print("My prediction is this.")
 print(dt_clf.predict(test_data))
-print("\nAm I right human?!")
+print("Am I right human?!")
 
 
